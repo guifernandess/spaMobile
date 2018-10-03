@@ -2,14 +2,14 @@ $(document).ready(function () {
     console.log("Olá, mundo!");
 
     $('#preco-min').on('input', function () {
-        var min = $('#preco-min').val();
+        min = $('#preco-min').val();
         console.log(`preco-min: ${min}`);
         $('#valor-min').html(min);
         listarProdutos();
     });
 
     $('#preco-max').on('input', function () {
-        var max = $('#preco-max').val();
+        max = $('#preco-max').val();
         console.log(`preco-max: ${max}`);
         $('#valor-max').html(max);
         listarProdutos();
@@ -26,10 +26,11 @@ $(document).ready(function () {
     });
 
     var produtos = [];
+    var min = 0;
+    var max = 10000;
 
     function listarProdutos() {
-        var min = $('#preco-min').val();
-        var max = $('#preco-max').val();
+       
         $('#produtos').html('');
         for (var i = 0; i < produtos.length; i++) {
             var produto = produtos[i];
@@ -37,6 +38,7 @@ $(document).ready(function () {
                 $('#produtos').append(`<li><a href="#${produto.id}">${produto.nome}</a> - R$ ${produto.preco}</li>`);
             }
         }
+
         if ($('#produtos').html() === '') {
             $('#produtos').append('<li class="alert alert-warning" role="alert">Nenhum produto encontrado!</li>');
         }
